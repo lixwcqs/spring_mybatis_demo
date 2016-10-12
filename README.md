@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #优雅的SSM架构(Spring+SpringMVC+Mybatis）
 - Maven
 - Spring（IOC DI AOP 声明式事务处理）
@@ -15,3 +16,7 @@
 
 ###**架构图：**
 ![](http://i.imgur.com/vc6iu0X.png)
+=======
+# spring_mybatis_demo
+根据开源项目beauty_ssm创建的练习项目
+>>>>>>> d96450b4e3e4489ea4fca623283f1c498997cd33
