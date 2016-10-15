@@ -1,0 +1,58 @@
+package com.cqs.demo.models.douban.dao;
+
+import com.cqs.demo.base.BaseConfigurationTest;
+import com.cqs.demo.models.JsonParser;
+import com.cqs.demo.models.douban.entity.Movie;
+import org.junit.Test;
+
+import javax.annotation.Resource;
+import java.util.List;
+
+/**
+ * Created by cqs on 10/14/16.
+ */
+public class MovieDaoTest extends BaseConfigurationTest {
+
+    @Resource
+    MovieDao movieDao;
+
+    @Test
+    public void testQueryAll() throws Exception {
+        List<Movie> movieList = movieDao.queryAll();
+        logger.debug("list info: " + movieList);
+    }
+
+    @Test
+    public void testInsertMovie() throws Exception {
+        Movie movie = new Movie();
+        movie.setTitle("喜剧之王");
+        movie.setCover("https://img3.doubanio.com/view/movie_poster_cover/lpst/public/p1043597424.jpg");
+        movie.setPlayable(true);
+        movie.setIsBeetleSubject(true);
+        movie.setIsNew(false);
+        movie.setRate(8.3f);
+        movie.setUrl("https://movie.douban.com/subject/1302425/");
+        logger.debug("" + movie);
+        movieDao.insertMovie(movie);
+    }
+
+
+    @Test
+    public void testBatchInsertMovies() throws Exception {
+        String[] tags = {
+                "热门", "最新", "经典", "可播放", "豆瓣高分", "冷门佳片", "动画",
+                "华语", "欧美", "韩国", "日本", "动作", "喜剧", "爱情", "科幻", "悬疑", "恐怖"
+        };
+        int page = 7;
+        int count = 0;
+        for (int i = 0; i < tags.length; i++) {
+            page = -1;
+            while (++page < 100) {
+                List<Movie> movies = new JsonParser().requestMoive(tags[i], page);
+                if (movies.isEmpty()) break;
+                movieDao.batchInsertMovies(movies);
+            }
+        }
+
+    }
+}

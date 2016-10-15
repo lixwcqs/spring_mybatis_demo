@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cqs.demo.models.douban.dao.MovieDao">
+
+    <select id="queryAll" resultType="Movie">
+        SELECT *
+        FROM _movie
+        ORDER BY title DESC
+        <!--limit #{offset},#{limit} -->
+    </select>
+
+
+    <insert id="insertMovie" parameterType="Movie">
+		INSERT INTO _movie(title,cover,rate,is_beetle_subject,is_new,playable,url)
+		VALUES(#{title},#{cover},#{rate},#{isBeetleSubject},#{isNew},#{playable},#{url})
+	</insert>
+
+    <insert id="batchInsertMovies" parameterType="Movie">
+        INSERT INTO _movie(title,cover,rate,is_beetle_subject,is_new,playable,url)
+        VALUES
+        <foreach collection="list" item="movie" separator=",">
+            (#{movie.title},#{movie.cover},#{movie.rate},#{movie.isBeetleSubject},#{movie.isNew},#{movie.playable},#{movie.url})
+        </foreach>
+    </insert>
+
+    <!--<resultMap id="movieMap" type="Movie">-->
+    <!--&lt;!&ndash;<result property="cover2" column="cover2"/>&ndash;&gt;-->
+    <!--</resultMap>-->
+
+</mapper>
