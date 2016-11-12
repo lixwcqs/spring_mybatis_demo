@@ -19,7 +19,7 @@ public class MongoDBTemplateDemoTest {
 
     @Test
     public void testInsert() throws Exception {
-        templateDemo.insert();
+        templateDemo.insertByTemplate();
     }
 
     @Test
@@ -30,5 +30,10 @@ public class MongoDBTemplateDemoTest {
     @Test
     public void testFindAll() throws Exception {
         templateDemo.findAll();
+    }
+
+    @Test
+    public void testFindOne() throws Exception {
+        templateDemo.findOne();
     }
 }
