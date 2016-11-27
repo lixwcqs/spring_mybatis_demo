@@ -11,6 +11,28 @@
     </select>
 
 
+    <select id="findById" parameterType="int" resultType="Movie">
+        SELECT *
+        FROM _movie t
+        where t.id = #{id}
+        <!--limit #{offset},#{limit} -->
+    </select>
+
+    <select id="findByName" parameterType="string" resultType="Movie">
+        SELECT *
+        FROM _movie t
+        where t.title = #{title}
+        <!--limit #{offset},#{limit} -->
+    </select>
+
+    <select id="findTitleAndRateById" parameterType="int" resultType="Movie">
+        SELECT title,rate
+        FROM _movie t
+        where t.id = #{id}
+        <!--limit #{offset},#{limit} -->
+    </select>
+
+
     <insert id="insertMovie" parameterType="Movie">
 		INSERT INTO _movie(title,cover,rate,is_beetle_subject,is_new,playable,url)
 		VALUES(#{title},#{cover},#{rate},#{isBeetleSubject},#{isNew},#{playable},#{url})
