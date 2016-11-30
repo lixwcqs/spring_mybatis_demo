@@ -9,7 +9,9 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.build.timestamp.format>yyyyMMdd</maven.build.timestamp.format>
-		<spring.version>4.2.0.RELEASE</spring.version>
+		<spring.version>4.3.3.RELEASE</spring.version>
+		<atomikos.version>4.0.4</atomikos.version>
+		<!--<atomikos.version>3.9.3</atomikos.version>-->
 	</properties>
 
 
@@ -235,6 +237,73 @@
 			<version>1.0.8</version>
 		</dependency>
 		<!--mybatis 数据访问层 end -->
+
+		<!-- activemq -->
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activeio-core</artifactId>
+			<version>3.1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-pool</artifactId>
+			<version>5.14.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-client</artifactId>
+			<version>5.14.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jms</artifactId>
+			<version>4.3.3.RELEASE</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jms</artifactId>
+			<version>${atomikos.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions-jta -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jta</artifactId>
+			<version>${atomikos.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions</artifactId>
+			<version>${atomikos.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/atomikos-util -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>atomikos-util</artifactId>
+			<version>${atomikos.version}</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions-jdbc -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-jdbc</artifactId>
+			<version>3.9.3</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/com.atomikos/transactions-hibernate3 -->
+		<dependency>
+			<groupId>com.atomikos</groupId>
+			<artifactId>transactions-hibernate3</artifactId>
+			<version>3.9.3</version>
+		</dependency>
+
 
 		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
 		<dependency>

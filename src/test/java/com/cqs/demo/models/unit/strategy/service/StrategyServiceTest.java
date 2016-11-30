@@ -1,6 +1,7 @@
 package com.cqs.demo.models.unit.strategy.service;
 
 import com.cqs.demo.base.BaseConfigurationTest;
+import com.cqs.demo.mock.StrategyMock;
 import org.junit.Test;
 
 import javax.annotation.Resource;
@@ -12,14 +13,15 @@ public class StrategyServiceTest extends BaseConfigurationTest {
     @Resource
     private StrategyService service;
 
+
     @Test
     public void insert() throws Exception {
-
+        service.insert(StrategyMock.randStrategy());
     }
 
     @Test
     public void selectById() throws Exception {
-        service.findAll();
+        service.selectById(1);
     }
 
     @Test
@@ -29,7 +31,7 @@ public class StrategyServiceTest extends BaseConfigurationTest {
 
     @Test
     public void findAll() throws Exception {
-
+        service.findAll();
     }
 
 }

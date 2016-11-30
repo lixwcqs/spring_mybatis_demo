@@ -10,10 +10,10 @@
     </select>
 
 
-    <select id="findById" parameterType="int" resultType="Strategy">
+    <select id="selectById" parameterType="int" resultType="Strategy">
         SELECT *
         FROM strategy t
-        where t.id = #{id}
+        where t.id = #{id} limit 1
     </select>
 
 
