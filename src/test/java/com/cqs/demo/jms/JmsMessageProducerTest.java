@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import javax.annotation.Resource;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by cqs on 16-11-30.
@@ -28,12 +29,13 @@ public class JmsMessageProducerTest extends BaseConfigurationTest {
     public void mockSyncStrategy() throws Exception {
         int len = service.findAll().size();
         boolean flag = false;
-        flag = true;
+//        flag = true;
         try {
             producer.mockSyncStrategy(flag);
         } catch (Exception e) {
             logger.error("出现异常", e);
         }
+        TimeUnit.SECONDS.sleep(3);
         Assert.assertTrue(service.findAll().size() - len == 1);
 
     }

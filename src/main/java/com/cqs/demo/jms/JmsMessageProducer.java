@@ -33,7 +33,7 @@ public class JmsMessageProducer<T> {
         Strategy strategy = StrategyMock.randStrategy();
         jmsTemplate.convertAndSend(strategy);
         try {
-            service.insert(strategy);
+            // service.insert(strategy);
             System.out.println(1 / 0);
         } catch (Exception e) {
             System.err.println("出现1/0异常");

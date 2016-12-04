@@ -26,7 +26,7 @@ public class StrategyService {
 
     public Strategy selectById(int id) {
         Strategy strategy = strategyDao.selectById(id);
-        jmsMessageProducer.sendMessage(strategy);
+        //jmsMessageProducer.sendMessage(strategy);
         return strategy;
     }
 
@@ -35,7 +35,6 @@ public class StrategyService {
     }
 
     public List<Strategy> findAll() {
-
         return strategyDao.findAll();
     }
 }
