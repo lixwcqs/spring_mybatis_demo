@@ -1,9 +1,12 @@
 package com.cqs.demo.models.douban.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by cqs on 10/15/16.
  */
-public class Movie {
+public class Movie implements Serializable {
+    private final static long serialVersionUID = 1L;
     int id;
     String title;
     String cover;

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="com.cqs.demo"/>
 
-    <!--<bean id="connectionFactory" name="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">-->
-    <!--<property name="connectionFactory">-->
-    <!--<bean class="org.apache.activemq.ActiveMQXAConnectionFactory">-->
-    <!--<property name="brokerURL" value="tcp://localhost:61616"/>-->
-    <!--</bean>-->
-    <!--</property>-->
-    <!--</bean>-->
+    <bean id="connectionFactory" name="connectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQXAConnectionFactory">
+                <property name="brokerURL" value="tcp://localhost:61616"/>
+            </bean>
+        </property>
+    </bean>
 
     <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
-        <!--<property name="connectionFactory" ref="connectionFactory"/>-->
-        <property name="connectionFactory" ref="atomikosJmsConnectionFactory"/>
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <!--<property name="connectionFactory" ref="atomikosJmsConnectionFactory"/>-->
         <property name="defaultDestination" ref="strategy"/>
         <property name="sessionTransacted" value="true"/>
         <property name="sessionAcknowledgeMode" value="0"/>
@@ -27,45 +27,46 @@
     </bean>
 
     <bean id="t1MessageListener" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
-        <property name="connectionFactory" ref="atomikosJmsConnectionFactory"/>
+        <!--<property name="connectionFactory" ref="atomikosJmsConnectionFactory"/>-->
+        <property name="connectionFactory" ref="connectionFactory"/>
         <property name="messageListener" ref="messageListenerStrategy"/>
         <property name="destination" ref="strategy"/>
         <property name="sessionTransacted" value="true"/>
         <property name="sessionAcknowledgeMode" value="0"/>
-        <property name="transactionManager" ref="jtaTransactionManager"/>
+        <!--<property name="transactionManager" ref="jtaTransactionManager"/>-->
     </bean>
 
-    <!-- Atomikos JTA transaction manager -->
-    <!-- 分布式事务 -->
-    <bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">
-        <property name="allowCustomIsolationLevels" value="true"/>
+    <!--&lt;!&ndash; Atomikos JTA transaction manager &ndash;&gt;-->
+    <!--&lt;!&ndash; 分布式事务 &ndash;&gt;-->
+    <!--<bean id="jtaTransactionManager" class="org.springframework.transaction.jta.JtaTransactionManager">-->
+    <!--<property name="allowCustomIsolationLevels" value="true"/>-->
 
-        <property name="transactionManager">
-            <bean class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">
-                <property name="forceShutdown" value="false"/>
-            </bean>
-        </property>
+    <!--<property name="transactionManager">-->
+    <!--<bean class="com.atomikos.icatch.jta.UserTransactionManager" init-method="init" destroy-method="close">-->
+    <!--<property name="forceShutdown" value="false"/>-->
+    <!--</bean>-->
+    <!--</property>-->
 
-        <property name="userTransaction">
-            <bean class="com.atomikos.icatch.jta.J2eeUserTransaction">
-                <property name="transactionTimeout" value="300"/>
-            </bean>
-        </property>
-    </bean>
+    <!--<property name="userTransaction">-->
+    <!--<bean class="com.atomikos.icatch.jta.J2eeUserTransaction">-->
+    <!--<property name="transactionTimeout" value="300"/>-->
+    <!--</bean>-->
+    <!--</property>-->
+    <!--</bean>-->
 
-    <!-- ActiveMQ connection factory -->
-    <!-- JTA/XA-enabled JMS -->
-    <bean id="atomikosJmsConnectionFactory" class="com.atomikos.jms.AtomikosConnectionFactoryBean" init-method="init">
-        <property name="uniqueResourceName" value="ActiveMQXA"/>
-        <property name="xaConnectionFactory">
-            <bean class="org.apache.activemq.ActiveMQXAConnectionFactory">
-                <!--<property name="brokerURL" value="vm://localhost?broker.persistent=false"/>-->
-                <property name="brokerURL" value="tcp://127.0.0.1:61616"/>
-            </bean>
-        </property>
-        <property name="poolSize" value="1"/>
-    </bean>
+    <!--&lt;!&ndash; ActiveMQ connection factory &ndash;&gt;-->
+    <!--&lt;!&ndash; JTA/XA-enabled JMS &ndash;&gt;-->
+    <!--<bean id="atomikosJmsConnectionFactory" class="com.atomikos.jms.AtomikosConnectionFactoryBean" init-method="init">-->
+    <!--<property name="uniqueResourceName" value="ActiveMQXA"/>-->
+    <!--<property name="xaConnectionFactory">-->
+    <!--<bean class="org.apache.activemq.ActiveMQXAConnectionFactory">-->
+    <!--&lt;!&ndash;<property name="brokerURL" value="vm://localhost?broker.persistent=false"/>&ndash;&gt;-->
+    <!--<property name="brokerURL" value="tcp://127.0.0.1:61616"/>-->
+    <!--</bean>-->
+    <!--</property>-->
+    <!--<property name="poolSize" value="1"/>-->
+    <!--</bean>-->
 
 
-    <tx:annotation-driven transaction-manager="jtaTransactionManager"/>
+    <!--<tx:annotation-driven transaction-manager="jtaTransactionManager"/>-->
 </beans>

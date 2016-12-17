@@ -245,4 +245,19 @@ public class Strategy implements Serializable {
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
     }
+
+
+    @Override
+    public String toString() {
+        return "Strategy{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", inTrafficMax=" + inTrafficMax +
+                ", inTrafficGuarantee=" + inTrafficGuarantee +
+                ", outTrafficMax=" + outTrafficMax +
+                ", outTrafficGuarantee=" + outTrafficGuarantee +
+                ", createDate=" + createDate +
+                ", updateDate=" + updateDate +
+                '}';
+    }
 }

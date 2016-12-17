@@ -21,7 +21,8 @@
     <select id="findByName" parameterType="string" resultType="Movie">
         SELECT *
         FROM _movie t
-        where t.title = #{title}
+        <!--         where t.title like #{title} -->
+        where t.title like CONCAT('%',#{title},'%')
         <!--limit #{offset},#{limit} -->
     </select>
 
@@ -33,12 +34,12 @@
     </select>
 
 
-    <insert id="insertMovie" parameterType="Movie">
+    <insert id="insert" parameterType="Movie">
 		INSERT INTO _movie(title,cover,rate,is_beetle_subject,is_new,playable,url)
 		VALUES(#{title},#{cover},#{rate},#{isBeetleSubject},#{isNew},#{playable},#{url})
 	</insert>
 
-    <insert id="batchInsertMovies" parameterType="Movie">
+    <insert id="batchInsert" parameterType="Movie">
         INSERT INTO _movie(title,cover,rate,is_beetle_subject,is_new,playable,url)
         VALUES
         <foreach collection="list" item="movie" separator=",">

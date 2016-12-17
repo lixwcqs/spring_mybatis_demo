@@ -51,7 +51,7 @@ public class MovieDaoTest extends BaseConfigurationTest {
         movie.setRate(8.3f);
         movie.setUrl("https://movie.douban.com/subject/1302425/");
         logger.debug("" + movie);
-        movieDao.insertMovie(movie);
+        movieDao.insert(movie);
     }
 
 
@@ -68,7 +68,7 @@ public class MovieDaoTest extends BaseConfigurationTest {
                 while (++page < 100) {
                     List<Movie> movies = new JsonParser().requestMoive(tags[i], page);
                     if (movies.isEmpty()) break;
-                    movieDao.batchInsertMovies(movies);
+                    movieDao.batchInsert(movies);
                 }
             }
         }

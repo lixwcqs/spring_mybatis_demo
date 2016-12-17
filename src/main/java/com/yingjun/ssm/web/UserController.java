@@ -14,7 +14,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/user")
-public class UserController {
+public class UserController implements IUserController {
 
 	private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 	
