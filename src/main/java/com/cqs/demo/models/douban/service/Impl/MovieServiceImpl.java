@@ -36,6 +36,4 @@ public class MovieServiceImpl extends BaseServiceImpl<Integer, Movie> implements
         return movieDao.findTitleAndRateById(id);
     }
 
-
-
 }

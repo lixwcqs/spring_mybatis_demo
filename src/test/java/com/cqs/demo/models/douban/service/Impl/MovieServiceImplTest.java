@@ -4,6 +4,7 @@ import com.cqs.demo.base.BaseConfigurationTest;
 import com.cqs.demo.models.douban.entity.Movie;
 import com.cqs.demo.models.douban.service.MovieService;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public class MovieServiceImplTest extends BaseConfigurationTest {
 
     @Resource
+    @Qualifier("movieServiceHessian")
     MovieService service;
 
     @Test
