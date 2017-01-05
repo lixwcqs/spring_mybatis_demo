@@ -21,8 +21,10 @@ public class BindingResultAop {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
-    @Pointcut("execution(* com.yingjun.ssm.web.*.*(..))")
+    @Pointcut("execution(* com.yingjun.ssm.web.*.*(..)) ")
     public void aopMethod(){}
+    @Pointcut("execution(* com.cqs.demo.models.*..*(..)) ")
+    public void aopMethod2(){}
 
     @Around("aopMethod()")
     public Object  around(ProceedingJoinPoint joinPoint) throws Throwable{

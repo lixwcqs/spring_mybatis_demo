@@ -1,4 +1,4 @@
-package com.cqs.demo.models.douban.service.Impl;
+package com.cqs.demo.models.douban.service.impl;
 
 import com.caucho.hessian.server.HessianServlet;
 import com.cqs.demo.models.douban.entity.Movie;

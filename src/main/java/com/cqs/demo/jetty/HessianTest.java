@@ -1,8 +1,6 @@
 package com.cqs.demo.jetty;
 
-import com.cqs.demo.models.douban.service.Impl.MovieServiceHessian;
-import com.cqs.demo.models.douban.service.Impl.MovieServiceImpl;
-import com.cqs.demo.models.douban.service.MovieService;
+import com.cqs.demo.models.douban.service.impl.MovieServiceHessian;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;

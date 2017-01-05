@@ -1,4 +1,4 @@
-package com.cqs.demo.models.douban.service.Impl;
+package com.cqs.demo.models.douban.service.impl;
 
 import com.cqs.demo.commons.base.dao.BaseDao;
 import com.cqs.demo.commons.base.service.BaseServiceImpl;

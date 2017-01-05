@@ -1,4 +1,4 @@
-package com.cqs.demo.models.douban.service.Impl;
+package com.cqs.demo.models.douban.service.impl;
 
 import com.cqs.demo.base.BaseConfigurationTest;
 import com.cqs.demo.models.douban.entity.Movie;
@@ -15,7 +15,8 @@ import java.util.List;
 public class MovieServiceImplTest extends BaseConfigurationTest {
 
     @Resource
-    @Qualifier("movieServiceHessian")
+    @Qualifier("movieServiceImpl")
+//    @Qualifier("movieServiceHessian")
     MovieService service;
 
     @Test
@@ -27,7 +28,7 @@ public class MovieServiceImplTest extends BaseConfigurationTest {
     @Test
     public void findByName() throws Exception {
         List<Movie> movies = service.findByName("喜剧之王");
-        System.out.println(movies);
+        System.out.println(movies.size());
     }
 
     @Test
